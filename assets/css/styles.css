@@ -115,6 +115,7 @@ img {
 }
 
 /*===== NAV =====*/
+/* ===== NAV ===== */
 .nav {
   height: var(--header-height);
   display: flex;
@@ -122,47 +123,44 @@ img {
   align-items: center;
   font-weight: var(--font-semi);
 }
+
+/* ===== NAV MENU MOBILE ===== */
 @media screen and (max-width: 767px) {
   .nav__menu {
     position: fixed;
     top: var(--header-height);
-    right: -100%;
-    width: 80%;
-    height: 100%;
+    right: -100%; /* مخفية في البداية */
+    width: 60%;   /* قللت العرض ليكون مناسب */
+    max-width: 300px; /* أقصى عرض */
+    height: 100vh;  /* تغطي ارتفاع الشاشة */
     padding: 2rem;
     background-color: var(--second-color);
     transition: 0.5s;
+    z-index: 999; /* تتأكد إنها فوق كل العناصر */
+    display: flex;
+    flex-direction: column;
+  }
+
+  .nav__item {
+    margin-bottom: 1.5rem; /* مسافة بين العناصر */
+  }
+
+  .nav__link {
+    color: #fff;
+    font-size: 1.1rem;
+  }
+
+  .nav__toggle {
+    display: block;
   }
 }
-.nav__item {
-  margin-bottom: var(--mb-4);
-}
+
+/* ===== LINK EFFECTS ===== */
 .nav__link {
   position: relative;
-  color: #fff;
-}
-.nav__link:hover {
-  position: relative;
-}
-.nav__link:hover::after {
-  position: absolute;
-  content: "";
-  width: 100%;
-  height: 0.18rem;
-  left: 0;
-  top: 2rem;
-  background-color: var(--first-color);
-}
-.nav__logo {
-  color: var(--second-color);
-}
-.nav__toggle {
-  color: var(--second-color);
-  font-size: 1.5rem;
-  cursor: pointer;
 }
 
-/*Active menu*/
+.nav__link:hover::after,
 .active-link::after {
   position: absolute;
   content: "";
@@ -173,10 +171,11 @@ img {
   background-color: var(--first-color);
 }
 
-/*=== Show menu ===*/
+/* ===== SHOW MENU ===== */
 .show {
-  right: 0;
+  right: 0; /* تظهر القائمة عند إضافة الكلاس show */
 }
+
 
 /*===== HOME =====*/
 .home {
